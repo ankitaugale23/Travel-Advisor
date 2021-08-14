@@ -4,18 +4,8 @@ import { CircularProgress, Grid, Typography, InputLabel, MenuItem, FormControl, 
 import useStyles from "./styles";
 import PlaceDetail from "../PlaceDeatils/PlaceDetail";
 
-const List = ()=> {
-    const places = [
-        {name: "cheesy pasta"},
-        {name: "spicy noodles"},
-        {name: "creamy milkshakes"},
-        {name: "cheesy pasta"},
-        {name: "spicy noodles"},
-        {name: "creamy milkshakes"},
-        {name: "cheesy pasta"},
-        {name: "spicy noodles"},
-        {name: "creamy milkshakes"},
-    ]
+const List = ({places})=> {
+   
     const classes =  useStyles();
     const [type, setType] = useState("restaurants");
     const [rating, setRating] = useState("");
