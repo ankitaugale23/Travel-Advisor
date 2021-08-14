@@ -47,6 +47,7 @@ const App = () => {
                         setCoordinates={setCoordinates} //passing as props so states can be updated with the
                         setBounds = {setBounds} //real time data we get from maps api
                         coordinates={coordinates}
+                        places={places}
                     />
                 </Grid>
             </Grid>
