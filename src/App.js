@@ -8,8 +8,14 @@ import { getPlaces } from "./apis";
 const App = () => {
 
     const [places, setPlaces] = useState([]);
+    const [filterPlaces, setFilterPlaces] = useState([]);
     const [coordinates, setCoordinates] = useState({}); //state to hold co ordinates of the current place
     const [bounds, setBounds] = useState({}); //state to hold bounds which will be passed to make api request
+    const [childClicked, setChildClicked] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
+    const [type, setType] = useState("restaurants");
+    const [rating, setRating] = useState("");
+
 
     useEffect( ()=> {   //will execute only on first render
 
@@ -19,15 +25,22 @@ const App = () => {
         })
     },[] );
 
+    useEffect( ()=> {
+       const filteredPlaces =  places.filter((place)=> place.rating > rating )
+       setFilterPlaces(filteredPlaces);
+    },[rating])    //execute when rating is changed
+
     useEffect(()=> {  //will run whenever either of coordinates and bounds states changes
         
-
-        getPlaces(bounds.sw, bounds.ne).then( (data)=> {
+        setIsLoading(true);
+        getPlaces(type, bounds.sw, bounds.ne).then( (data)=> {
             console.log(data);
             setPlaces(data);
+            setIsLoading(false);
+            setFilterPlaces([]);
 
         })
-    }, [coordinates, bounds] );
+    }, [type,coordinates, bounds] );
 
     return (
 
@@ -38,7 +51,13 @@ const App = () => {
 
                 <Grid item xs={12} md={4}>
                     <List 
-                       places={places}
+                       places={filterPlaces.length ? filterPlaces : places}
+                       childClicked={childClicked}
+                       isLoading={isLoading}
+                       type={type}
+                       setType={setType}
+                       rating={rating}
+                       setRating={setRating}
                     />
                 </Grid>
 
@@ -47,7 +66,8 @@ const App = () => {
                         setCoordinates={setCoordinates} //passing as props so states can be updated with the
                         setBounds = {setBounds} //real time data we get from maps api
                         coordinates={coordinates}
-                        places={places}
+                        places={filterPlaces.length ? filterPlaces : places}
+                        setChildClicked={setChildClicked}
                     />
                 </Grid>
             </Grid>

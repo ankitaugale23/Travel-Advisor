@@ -6,7 +6,7 @@ import Rating from "@material-ui/lab/Rating";
 
 import useStyles from "./styles";
 
-const Maps = ({setBounds, setCoordinates, coordinates,places})=> {
+const Maps = ({setBounds, setCoordinates, coordinates,places,setChildClicked})=> {
 
     const classes = useStyles();
     const isDesktop = useMediaQuery('(min-width: 600px)');
@@ -25,9 +25,9 @@ const Maps = ({setBounds, setCoordinates, coordinates,places})=> {
                     setCoordinates({lat: e.center.lat , lng: e.center.lng });
                     setBounds({ne: e.marginBounds.ne, sw: e.marginBounds.sw})
                 }}
-                onChildClick={''}   /*upadte when user will select any other resturant*/
+                onChildClick={(child)=> { setChildClicked(child) }}   /*upadte when user will select any other resturant*/
                 >
-                  {places?.map((place,i)=> (
+                  {places?.map((place,i)=> (                    //code to show restaurants cards on the map
                         <div 
                             className={classes.markerContainer}
                             lat={Number(place.latitude)}
