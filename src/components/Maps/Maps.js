@@ -1,4 +1,3 @@
-import react from "react";
 import GoogleMapReact from "google-map-react";
 import {Paper, Typography, useMediaQuery} from "@material-ui/core";
 import LocationOnOutlinedIcon from "@material-ui/icons/LocationOnOutlined";
@@ -14,9 +13,9 @@ const Maps = ({setBounds, setCoordinates, coordinates,places,setChildClicked,wea
 
 
     return (
-        <div className={classes. mapContainer}>
+        <div className={classes.mapContainer}>
             <GoogleMapReact    /*main component which will provide map from google maps api*/
-                bootstrapURLKeys={{key: 'AIzaSyDBRxOlgkPQv-tQe1wydXs7GpgMt7RJHsc' }}  /*google map api key*/
+                bootstrapURLKeys={{key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY }}  /*google map api key*/
                 defaultCenter={coordinates}  /*default centered place's co ordinates*/
                 center={coordinates}
                 defaultZoom={10}
@@ -57,7 +56,7 @@ const Maps = ({setBounds, setCoordinates, coordinates,places,setChildClicked,wea
             
             {weatherData?.list?.length && weatherData.list.map((data, i) => (
           <div key={i} lat={data.coord.lat} lng={data.coord.lon}>
-            <img src={`http://openweathermap.org/img/w/${data.weather[0].icon}.png`} height="70px" />
+            <img src={`http://openweathermap.org/img/w/${data.weather[0].icon}.png`} alt={data.weather[0].description} height="70px" />
           </div>
         ))}
 

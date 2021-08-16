@@ -1,4 +1,4 @@
-import react, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { CssBaseline, Grid } from "@material-ui/core";
 import Header from "./components/Header/Header";
 import Maps from "./components/Maps/Maps";

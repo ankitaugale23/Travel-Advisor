@@ -1,4 +1,4 @@
-import react, { createRef, useEffect, useState } from "react";
+import { createRef, useEffect, useState } from "react";
 import { CircularProgress, Grid, Typography, InputLabel, MenuItem, FormControl, Select } from "@material-ui/core";
 
 import useStyles from "./styles";
@@ -13,7 +13,7 @@ const List = ({places,childClicked,isLoading,setType,setRating,type,rating})=> {
     useEffect( ()=> {
         const refs = Array(places?.length).fill().map((_,i)=> eleRefs[i] || createRef());  //create as many refernces as there are places.
         setEleRefs(refs);
-    }, [places]);
+    }, [places,eleRefs]);
 
     return <div className={classes.container}>
         <Typography variant="h5">Restaurants, Hotels and Attractions around you</Typography>
@@ -42,7 +42,7 @@ const List = ({places,childClicked,isLoading,setType,setRating,type,rating})=> {
             </Select>
         </FormControl>
         <Grid className={classes.list} container spacing={3}>
-            {places ?.map((place, i) => (
+            {places?.map((place, i) => (
                 <Grid ref={eleRefs[i]} item key={i} xs={12}> {/*ref prop is imp to implement the scrolling functionality*/}
                     <PlaceDetail 
                         place={place} 
