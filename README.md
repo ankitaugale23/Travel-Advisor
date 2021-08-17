@@ -1,3 +1,17 @@
+# Travel Advisor 
+This project allows user to search for hotels, restaurants and attractions in his current location. 
+User can also update his location in the map as per his choice and the cards of different attractions, reaturants and hotels will be changed in map.
+User can also apply filters for rating to search for places accroding to his preferences.
+Map used in the (Google Maps API) also shows weather data of places to user in the map.
+
+## Tech Stack
+1. React (Hooks, States, Refs, Environment Variables)
+2. Google Maps API
+3. Open Weather Map ApI
+4. Travel Advisor API
+
+### Website is still under work, it may cause some issues while viewing the website. You may revisit after some time as I am constantly trying to improve it.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
