@@ -13,7 +13,7 @@ const List = ({places,childClicked,isLoading,setType,setRating,type,rating})=> {
     useEffect( ()=> {
         const refs = Array(places?.length).fill().map((_,i)=> eleRefs[i] || createRef());  //create as many refernces as there are places.
         setEleRefs(refs);
-    }, [places,eleRefs]);
+    }, [places]);
 
     return <div className={classes.container}>
         <Typography variant="h5">Restaurants, Hotels and Attractions around you</Typography>
