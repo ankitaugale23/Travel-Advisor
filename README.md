@@ -10,7 +10,8 @@ Map used in the (Google Maps API) also shows weather data of places to user in t
 3. Open Weather Map ApI
 4. Travel Advisor API
 
-### Website is still under work, it may cause some issues while viewing the website. You may revisit after some time as I am constantly trying to improve it.
+### Facing the issues with Maps API, once it is resolved will upload the link of hosted website again.
+
 
 # Getting Started with Create React App
 
